@@ -1,0 +1,16 @@
+---
+import Layout from '../layouts/layout.astro'
+import BlogCard from '../components/blogCard.astro';
+import { getCollection } from 'astro:content';
+const blogEntries = await getCollection("blog")
+        console.log(blogEntries[0])
+---
+
+<Layout title="title" description ="des">
+<h1>Astro</h1>
+<div>
+	{blogEntries.map(post => (
+		<BlogCard title={post.data.title} description={post.data.description} slug={post.slug} />
+	  ))}
+</div>
+</layout>

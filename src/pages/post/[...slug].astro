@@ -1,0 +1,22 @@
+---
+import type { GetStaticPaths } from "astro";
+import { getCollection, type CollectionEntry } from "astro:content";
+// 1. コレクションエントリーごとに新しいパスを生成
+export const getStaticPaths = (async () => {
+    const blogPosts =  await getCollection("blog");
+    return blogPosts.map( (post) => {
+        params: { slug: post.slug }
+        props: { post }
+    });
+}) 
+
+
+//const { post } = Astro.props
+
+// コレクションからすべてのエントリーを取得します。
+// 引数としてコレクション名が必要です。
+// 例: `src/content/blog/**`を取得する。
+// const blogPosts : CollectionEntry<"blog">[] = await getCollection(
+  // "blog"
+// );
+---

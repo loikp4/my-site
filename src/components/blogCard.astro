@@ -1,0 +1,37 @@
+---
+// Propsの定義
+interface BlogCardProps {
+  title: string;
+  description: string;
+  slug: string;
+}
+const { title, description, slug } = Astro.props as BlogCardProps;
+---
+<article class="bg-white border border-gray-300 p-4 shadow rounded-lg">
+  <a href={`/post/${slug}`} class="no-underline text-current">
+    <h2 class="text-lg font-bold mb-2">{title}</h2>
+    <p class="text-blue-500 hover:text-blue-700">{description}</p>
+  </a>
+</article>
+
+<style>
+  .blog-card {
+    border: 1px solid #ccc;
+    padding: 16px;
+    margin-bottom: 20px;
+    transition: box-shadow 0.3s;
+  }
+  .blog-card:hover {
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+  }
+  .blog-link {
+    text-decoration: none;
+    color: inherit;
+  }
+  h2 {
+    margin: 0 0 10px 0;
+  }
+  p {
+    margin: 0;
+  }
+</style>
